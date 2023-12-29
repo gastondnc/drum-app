@@ -1,0 +1,43 @@
+<!-- Container Sound Btns -->
+<div class="container-fluid-lg d-flex gap-2 justify-content-center mt-4">
+  <ng-container *ngFor="let key of keys">
+    <div class="key" (click)="playSound(key)">
+      <kbd>{{ key.label }}</kbd>
+      <span class="sound">{{ key.soundLabel }}</span>
+      <audio
+        [src]="'/assets/sounds/' + key.soundFile + '.wav'"
+        id="{{ key.id }}"
+      ></audio>
+    </div>
+  </ng-container>
+</div>
+<!-- End Container Sound Btns -->
+
+<!-- Container Btns Play, Rec, Stop -->
+<div class="container-lg d-flex gap-3 justify-content-center mt-5">
+  <div>
+    <button class="btn btn-primary" (click)="playSong()">Play Song</button>
+  </div>
+  <div *ngIf="!isRecording">
+    <button class="btn btn-danger" (click)="openOptions()">REC</button>
+  </div>
+  <div *ngIf="isRecording">
+    <button class="btn btn-danger" (click)="stopRec()">STOP</button>
+  </div>
+</div>
+<!-- End Container Btns Play, Rec, Stop -->
+
+<!-- Container Btns New, Delete -->
+<ng-container *ngIf="isOptions === true">
+  <div class="container d-flex gap-3 justify-content-center mt-5">
+    <div>
+      <button class="btn btn-success" (click)="recSong('new')">New Song</button>
+    </div>
+    <div>
+      <button class="btn btn-danger" (click)="recSong('delete')">
+        Delete Song
+      </button>
+    </div>
+  </div>
+</ng-container>
+<!-- End Container Btns New, Delete -->

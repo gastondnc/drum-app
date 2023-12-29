@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'drum-app';
+  public title = 'Drum-app';
+
+
+  constructor(){}
 }
