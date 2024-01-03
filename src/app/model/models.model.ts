@@ -4,7 +4,12 @@ export interface Key {
     label: string;
     soundLabel: string;
     soundFile: string;
-    category: string;
+    packId: number;
+}
+
+export interface Pack{
+  id: number;
+  packName: string;
 }
 
 

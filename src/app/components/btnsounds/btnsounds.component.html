@@ -1,8 +1,12 @@
+<div>
+  <h2 class="text-white text-center mt-3">{{packName}}</h2>
+</div>
+
 <!-- Container Sound Btns -->
-<div class="container-lg d-flex justify-content-center mt-4">
+<div class="container-lg d-flex row-cols-lg-6 flex-wrap justify-content-center mt-4">
   <ng-container *ngFor="let key of keys">
     <div
-      class="container-lg d-flex col-1 flex-column text-center"
+      class="container-lg d-flex flex-column text-center"
       (click)="playSound(key)"
     >
       <kbd [id]="key.dataKey" type="button" class="btn btn-outline-warning">
@@ -10,7 +14,7 @@
       </kbd>
       <span class="sound text-white">{{ key.soundLabel }}</span>
       <audio
-        [src]="'/assets/sounds/' + key.category + '/' + key.soundFile + '.wav'"
+        [src]="'/assets/sounds/' + getPackName(key.packId) + '/' + key.soundFile + '.wav'"
         id="{{ key.id }}"
       ></audio>
     </div>
@@ -78,3 +82,9 @@
   </ng-container>
 </div>
 <!-- End Song Components -->
+
+<!-- Back Start -->
+<div class="container d-flex justify-content-center">
+  <a [routerLink]="''" class=" btn btn-danger btn-sm text-white">{{literals.linkBack}}</a>
+</div>
+<!-- End Back Start -->
