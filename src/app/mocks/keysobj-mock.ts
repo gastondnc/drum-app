@@ -5,7 +5,7 @@ export const KEYS_MOCK = [
     label: 'A',
     soundLabel: 'clap',
     soundFile: 'clap',
-    category: 'varios'
+    packId: 2
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ export const KEYS_MOCK = [
     label: 'L',
     soundLabel: 'boom',
     soundFile: 'boom',
-    category: 'varios'
+    packId: 2
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ export const KEYS_MOCK = [
     label: 'S',
     soundLabel: 'hihat',
     soundFile: 'hihat',
-    category: 'varios'
+    packId: 2
   },
   {
     id: 4,
@@ -29,7 +29,7 @@ export const KEYS_MOCK = [
     label: 'K',
     soundLabel: 'kick',
     soundFile: 'kick',
-    category: 'varios'
+    packId: 2
   },
   {
     id: 5,
@@ -37,7 +37,7 @@ export const KEYS_MOCK = [
     label: 'D',
     soundLabel: 'hat',
     soundFile: 'hat',
-    category: 'varios'
+    packId: 2
   },
   {
     id: 6,
@@ -45,7 +45,7 @@ export const KEYS_MOCK = [
     label: 'J',
     soundLabel: 'ride',
     soundFile: 'ride',
-    category: 'varios'
+    packId: 2
   },
   {
     id: 7,
@@ -53,7 +53,7 @@ export const KEYS_MOCK = [
     label: 'F',
     soundLabel: 'snare',
     soundFile: 'snare',
-    category: 'varios'
+    packId: 2
   },
   {
     id: 8,
@@ -61,7 +61,7 @@ export const KEYS_MOCK = [
     label: 'H',
     soundLabel: 'tink',
     soundFile: 'tink',
-    category: 'varios'
+    packId: 2
   },
   {
     id: 9,
@@ -69,7 +69,7 @@ export const KEYS_MOCK = [
     label: 'G',
     soundLabel: 'tom',
     soundFile: 'tom',
-    category: 'varios'
+    packId: 2
   },
   {
     id: 10,
@@ -77,15 +77,79 @@ export const KEYS_MOCK = [
     label: 'Q',
     soundLabel: 'hardkick',
     soundFile: 'Hard_Kick_2',
-    category: 'kicks'
+    packId: 5
   },
   {
-    id: 11,
+    id: 10,
     dataKey: '87',
     label: 'W',
-    soundLabel: 'tom',
-    soundFile: 'SyhTom01',
-    category: 'toms',
+    soundLabel: 'hardkick',
+    soundFile: 'Hard_Kick_3',
+    packId: 5
   },
+  {
+    id: 12,
+    dataKey: '69',
+    label: 'E',
+    soundLabel: 'perc24',
+    soundFile: 'Perc24',
+    packId: 6,
+  },
+  {
+    id: 13,
+    dataKey: '82',
+    label: 'R',
+    soundLabel: 'perc22',
+    soundFile: 'Perc22',
+    packId: 6,
+  },
+  {
+    id: 14,
+    dataKey: '84',
+    label: 'T',
+    soundLabel: 'fx2',
+    soundFile: 'FX2',
+    packId: 6,
+  },
+  {
+    id: 15,
+    dataKey: '89',
+    label: 'Y',
+    soundLabel: 'perc18',
+    soundFile: 'Perc18',
+    packId: 6,
+  },
+  {
+    id: 16,
+    dataKey: '85',
+    label: 'U',
+    soundLabel: 'per9',
+    soundFile: 'Perc11',
+    packId: 6,
+  },
+  {
+    id: 17,
+    dataKey: '73',
+    label: 'I',
+    soundLabel: 'perc1',
+    soundFile: 'Perc6',
+    packId: 6,
+  },
+  {
+    id: 18,
+    dataKey: '79',
+    label: 'O',
+    soundLabel: 'fx1',
+    soundFile: 'FX1',
+    packId: 6,
+  },
+  {
+    id: 19,
+    dataKey: '80',
+    label: 'P',
+    soundLabel: 'conga1',
+    soundFile: 'Conga_1',
+    packId: 6,
+  }
 ]
 

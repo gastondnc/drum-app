@@ -4,7 +4,10 @@ export const LITERALS =
       btnRec: 'REC',
       btnStop: 'STOP',
       btnNew: 'New Song',
-      btnDel: 'Delete'
+      btnDel: 'Delete',
+      btnStart: 'START',
+      labelSelec: 'Slected Pack Sounds',
+      linkBack: 'Change sound pack'
     }
 
 

@@ -1,10 +1,12 @@
 
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 // Imports de entorno de desarolo //
 import { KEYS_MOCK } from 'src/app/mocks/keysobj-mock';
 import { LITERALS } from 'src/app/mocks/literals.mock';
-import { Key } from 'src/app/model/models.model';
+import { PACKS } from 'src/app/mocks/packs-mock';
+import { Key, Pack } from 'src/app/model/models.model';
 
 
 @Component({
@@ -14,7 +16,10 @@ import { Key } from 'src/app/model/models.model';
 })
 export class BtnsoundsComponent {
   public keys: Key[] = KEYS_MOCK;
-  public literals: any = LITERALS
+  public packs: Pack[] = PACKS;
+  public packName: string = '';
+  public literals: any = LITERALS;
+  private packId: number = 0;
   private song: Key[] = [];
   public songs: Key[][] = this.getStorage();
   private audio: HTMLAudioElement | null = null;
@@ -28,9 +33,16 @@ export class BtnsoundsComponent {
   public isRecording: boolean = false;
   public isPlaying: boolean = false;
 
-  constructor() {
-    this.getStorage()
-    this.setListener()
+  constructor( private route: ActivatedRoute  ) {
+    this.route.params.subscribe( param => {
+      console.log(param)
+      this.packId = Number(param['id']);
+      this.setKeys()
+      this.packName = this.getPackName(this.packId);
+    } )
+
+    this.getStorage();
+    this.setListener();
   }
 
   setListener() {
@@ -51,9 +63,6 @@ export class BtnsoundsComponent {
     buttonEl.addEventListener('transitionend', () => {
       buttonEl.classList.remove('active')
     })
-    // setTimeout(()=>{
-    //   buttonEl.classList.remove('active')
-    // },100)
   }
 
   playSound(key: Key) {
@@ -144,6 +153,16 @@ export class BtnsoundsComponent {
   getStorage(): Key[][] {
     const ls: string | null = localStorage.getItem('songs')
     return ls !== null ? JSON.parse(ls) : []
+  }
+
+
+  getPackName(packId: number): string {
+    const pack =  this.packs.find( pack => pack.id === packId )
+    return pack?.packName!
+  }
+
+  setKeys() {
+    this.keys = this.keys.filter( key =>  key.packId === this.packId)
   }
 
 }
