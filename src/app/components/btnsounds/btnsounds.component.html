@@ -1,11 +1,16 @@
 <!-- Container Sound Btns -->
-<div class="container-fluid-lg d-flex gap-2 justify-content-center mt-4">
+<div class="container-lg d-flex justify-content-center mt-4">
   <ng-container *ngFor="let key of keys">
-    <div class="key" (click)="playSound(key)">
-      <kbd>{{ key.label }}</kbd>
-      <span class="sound">{{ key.soundLabel }}</span>
+    <div
+      class="container-lg d-flex col-1 flex-column text-center"
+      (click)="playSound(key)"
+    >
+      <kbd [id]="key.dataKey" type="button" class="btn btn-outline-warning">
+        {{ key.label }}
+      </kbd>
+      <span class="sound text-white">{{ key.soundLabel }}</span>
       <audio
-        [src]="'/assets/sounds/' + key.soundFile + '.wav'"
+        [src]="'/assets/sounds/' + key.category + '/' + key.soundFile + '.wav'"
         id="{{ key.id }}"
       ></audio>
     </div>
@@ -15,29 +20,59 @@
 
 <!-- Container Btns Play, Rec, Stop -->
 <div class="container-lg d-flex gap-3 justify-content-center mt-5">
-  <div>
-    <button class="btn btn-primary" (click)="playSong()">Play Song</button>
+  <div *ngIf="!isPlaying && !isRecording && songs!.length > 0">
+    <button class="btn btn-success" (click)="playSong(songs!.length - 1)">
+      {{ literals.btnPlay }}
+    </button>
   </div>
-  <div *ngIf="!isRecording">
-    <button class="btn btn-danger" (click)="openOptions()">REC</button>
+  <div *ngIf="isPlaying">
+    <button class="btn btn-primary" (click)="stopSong()">
+      {{ literals.btnStop }}
+    </button>
+  </div>
+  <div *ngIf="!isRecording && !isPlaying">
+    <button class="btn btn-danger" (click)="startRec()">
+      {{ literals.btnRec }}
+    </button>
   </div>
   <div *ngIf="isRecording">
-    <button class="btn btn-danger" (click)="stopRec()">STOP</button>
+    <button class="btn btn-danger" (click)="stopRec()">
+      {{ literals.btnStop }}
+    </button>
   </div>
 </div>
 <!-- End Container Btns Play, Rec, Stop -->
 
-<!-- Container Btns New, Delete -->
-<ng-container *ngIf="isOptions === true">
-  <div class="container d-flex gap-3 justify-content-center mt-5">
-    <div>
-      <button class="btn btn-success" (click)="recSong('new')">New Song</button>
-    </div>
-    <div>
-      <button class="btn btn-danger" (click)="recSong('delete')">
-        Delete Song
-      </button>
-    </div>
+<div class="d-flex gap-3" *ngIf="isPlaying">
+  <div>
+    <button
+      class="btn btn-info"
+      (click)="slowRate()"
+      [disabled]="rate >= slowLimit"
+    >
+      Slow
+    </button>
   </div>
-</ng-container>
-<!-- End Container Btns New, Delete -->
+  <div>
+    <button
+      class="btn btn-info"
+      (click)="fastRate()"
+      [disabled]="rate <= fastLimit"
+    >
+      Fast
+    </button>
+  </div>
+</div>
+
+<!-- Song Components -->
+<div class="container mb-5">
+  <ng-container *ngFor="let song of songs; index as i">
+    <song-item
+      [song]="song"
+      (on-play)="playSong(i)"
+      (on-delete)="deleteSong(song)"
+    >
+    </song-item>
+  </ng-container>
+</div>
+<!-- End Song Components -->

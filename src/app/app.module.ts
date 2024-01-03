@@ -3,11 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { BtnsoundsComponent } from './components/btnsounds/btnsounds.component';
+import { SongItemComponent } from './components/song-item/song-item.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    BtnsoundsComponent
+    BtnsoundsComponent,
+    SongItemComponent
   ],
   imports: [
     BrowserModule

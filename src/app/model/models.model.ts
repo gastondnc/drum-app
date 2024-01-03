@@ -4,4 +4,7 @@ export interface Key {
     label: string;
     soundLabel: string;
     soundFile: string;
+    category: string;
 }
+
+
