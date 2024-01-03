@@ -43,26 +43,28 @@
 </div>
 <!-- End Container Btns Play, Rec, Stop -->
 
-<div class="d-flex gap-3" *ngIf="isPlaying">
+<!-- Container Fast Low -->
+<div class="d-flex gap-3 justify-content-center mt-3 mb-3" *ngIf="isPlaying">
   <div>
     <button
-      class="btn btn-info"
-      (click)="slowRate()"
-      [disabled]="rate >= slowLimit"
+    class="btn btn-info"
+    (click)="slowRate()"
+    [disabled]="rate >= slowLimit"
     >
-      Slow
-    </button>
-  </div>
-  <div>
-    <button
-      class="btn btn-info"
-      (click)="fastRate()"
-      [disabled]="rate <= fastLimit"
-    >
-      Fast
-    </button>
-  </div>
+    Slow
+  </button>
 </div>
+<div>
+  <button
+  class="btn btn-info"
+  (click)="fastRate()"
+  [disabled]="rate <= fastLimit"
+  >
+  Fast
+</button>
+</div>
+</div>
+<!-- End Container Fast Low -->
 
 <!-- Song Components -->
 <div class="container mb-5">
