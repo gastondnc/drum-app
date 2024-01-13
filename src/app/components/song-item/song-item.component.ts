@@ -21,7 +21,6 @@ export class SongItemComponent implements OnInit {
     this.song.forEach( (sound: Key) => {
       this.songLabel = `${this.songLabel} ${sound.soundLabel}`
     } )
-    console.log(this.songLabel)
   }
 
   playHandler(){

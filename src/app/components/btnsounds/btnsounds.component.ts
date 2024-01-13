@@ -35,7 +35,6 @@ export class BtnsoundsComponent {
 
   constructor( private route: ActivatedRoute  ) {
     this.route.params.subscribe( param => {
-      console.log(param)
       this.packId = Number(param['id']);
       this.setKeys()
       this.packName = this.getPackName(this.packId);
@@ -75,7 +74,6 @@ export class BtnsoundsComponent {
   saveSound(keyObj: Key) {
     if (this.isRecording === true) {
       this.song.push(keyObj)
-      console.log('Sound guardado', this.song)
     }
   }
 
@@ -89,7 +87,6 @@ export class BtnsoundsComponent {
 
   playSong(index: number) {
     this.isPlaying = true
-    console.log('PLAY', this.song)
     this.indexSongPlaying = index;
     this.createInterval(0)
   }
@@ -102,7 +99,6 @@ export class BtnsoundsComponent {
   startRec() {
     this.song = []
     this.isRecording = true
-    console.log('Recording', this.isRecording)
   }
 
   stopRec() {
@@ -111,17 +107,14 @@ export class BtnsoundsComponent {
       this.songs.push(this.song);
       this.setStorage()
     }
-    console.log(this.songs)
   }
 
   slowRate() {
-    console.log('Slow')
     this.rate = this.rate + this.rateVel
     this.createInterval();
   }
 
   fastRate() {
-    console.log('Fast')
     this.rate = this.rate - this.rateVel
     this.createInterval();
   }
@@ -140,13 +133,11 @@ export class BtnsoundsComponent {
       } else {
         this.indexSoundPlaying = 0
       }
-      console.log('Interval')
     }, this.rate)
   }
 
 
   setStorage() {
-    console.log('desde Storage');
     localStorage.setItem('songs', JSON.stringify(this.songs));
   }
 
